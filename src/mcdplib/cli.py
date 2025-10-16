@@ -12,9 +12,9 @@ def cli(datapack: Datapack) -> None:
 
     arguments = argument_parser.parse_args()
 
-    if arguments["action"] == "write":
+    if arguments.action == "write":
         if "writedirectory" not in arguments:
             raise ValueError("Argument --writedirectory (-w) is required for write action")
-        datapack.write(arguments["writedirectory"])
+        datapack.write(arguments.writedirectory)
     else:
         raise ValueError(f"Action {arguments['action']} does not exist")
