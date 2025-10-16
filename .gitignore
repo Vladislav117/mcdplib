@@ -1,0 +1,5 @@
+/.idea/
+/dist/
+/src/mcdplib.egg-info/
+/src/test/
+/src/mcdplib/__pycache__/
