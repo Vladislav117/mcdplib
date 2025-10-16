@@ -23,6 +23,11 @@ class ResourceRegistry:
         self.__resources: dict[str, Resource] = dict()
 
     def add(self, resource: Resource) -> Resource:
+        for allowed_resource_type in self.allowed_resource_types:
+            if isinstance(resource, allowed_resource_type):
+                break
+        else:
+            raise TypeError(f"Wrong resource type: {type(resource)}")
         if resource.identifier.__str__() in self.__resources:
             raise KeyError(f"Resource with identifier {resource.identifier} already exists")
         self.__resources[resource.identifier.__str__()] = resource
