@@ -40,6 +40,9 @@ class ResourceRegistry:
             os.makedirs(resource_directory, exist_ok=True)
             resource.write(resource_file)
 
+    def __iter__(self):
+        return self.__resources.values().__iter__()
+
 
 class ResourceBuilder:
     def __init__(self, registry: str, identifier: IdentifierLike):
