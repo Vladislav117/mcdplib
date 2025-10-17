@@ -26,6 +26,17 @@ class Identifier:
         self.namespace: str = namespace
         self.name: str = name
 
+    def get_parent(self) -> Identifier:
+        if self.name.count("/") >= 1:
+            return Identifier(
+                namespace=self.namespace,
+                name=self.name.rsplit("/", maxsplit=1)[0]
+            )
+        return Identifier(
+            namespace=self.namespace,
+            name=""
+        )
+
     def __str__(self):
         return f"{self.namespace}:{self.name}"
 
