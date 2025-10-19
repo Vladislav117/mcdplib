@@ -14,12 +14,13 @@ class Resource:
 
 
 class ResourceRegistry:
-    def __init__(self, name: str, allowed_resource_types: list[type], file_extension: str):
+    def __init__(self, name: str, allowed_resource_types: list[type], file_extension: str, resource_builder_loaders: list[ResourceBuilderLoader]):
         if not contains_only(name, "0123456789abcdefghijklmnopqrstuvwxyz_-./"):
             raise ValueError(f"Invalid registry name: {name}")
         self.name: str = name
         self.allowed_resource_types: list[type] = allowed_resource_types
         self.file_extension: str = file_extension
+        self.resource_builder_loaders: list[ResourceBuilderLoader] = resource_builder_loaders
         self.__resources: dict[str, Resource] = dict()
 
     def add(self, resource: Resource) -> Resource:
