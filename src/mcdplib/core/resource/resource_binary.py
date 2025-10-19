@@ -11,6 +11,7 @@ class BinaryResource(Resource):
     def write(self, file: str) -> None:
         write_binary_file(file, self.data)
 
+
 class BinaryResourceBuilder(ResourceBuilder):
     def build(self, context: dict) -> list[BinaryResource]:
         resources: list[BinaryResource] = list()
