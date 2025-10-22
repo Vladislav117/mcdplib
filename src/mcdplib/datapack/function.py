@@ -122,7 +122,7 @@ class Function(StringResourceBuilder):
     def build(self, context: dict) -> list[StringResource]:
         resources: list[StringResource] = list()
         resources.append(StringResource(
-            registry=Function.DATAPACK_FUNCTIONS_REGISTRY,
+            registry_name=Function.DATAPACK_FUNCTIONS_REGISTRY,
             identifier=self.identifier,
             data=self.head_segment.build(self, context)
         ))
@@ -130,5 +130,5 @@ class Function(StringResourceBuilder):
 
 
 class FunctionResourceBuilderLoader(ResourceBuilderLoader):
-    def load(self, directory: str, file: str, registry: str, identifier: Identifier) -> Function:
-        return Function.function(identifier, read_text_file(file))
+    def load(self, directory: str, file: str, registry: str, identifier: Identifier) -> list[Function]:
+        return [Function.function(identifier, read_text_file(file))]

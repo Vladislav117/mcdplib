@@ -137,5 +137,5 @@ class FunctionTemplate(StringResourceBuilder):
 
 
 class FunctionTemplateResourceBuilderLoader(ResourceBuilderLoader):
-    def load(self, directory: str, file: str, registry: str, identifier: Identifier) -> FunctionTemplate:
-        return FunctionTemplate.function_template(identifier, read_text_file(file))
+    def load(self, directory: str, file: str, registry: str, identifier: Identifier) -> list[FunctionTemplate]:
+        return [FunctionTemplate.function_template(identifier, read_text_file(file))]
